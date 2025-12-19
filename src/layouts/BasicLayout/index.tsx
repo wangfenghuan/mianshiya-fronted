@@ -17,6 +17,10 @@ import React from 'react'; // 移除了不用的 useState
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import GlobalFooter from "@/components/GlobalFooter";
+import menus from "../../../config/menu";
+import {useSelector} from "react-redux";
+import {RootState} from "@/stores";
+import {getAccessibleMenus} from "@/access/menuAccess";
 
 // 1. 这里的 key 属性去掉了，因为它应该在调用方使用
 const SearchInput = () => {
@@ -63,7 +67,7 @@ interface Props {
 
 export default function BasicLayout({ children }: Props) {
     const pathName = usePathname();
-
+    const loginUser = useSelector((state: RootState) => state.loginUser)
     return (
         <div
             id="basiclayout"
@@ -82,9 +86,9 @@ export default function BasicLayout({ children }: Props) {
                     pathname: pathName, // 注意：ProLayout 属性通常是 pathname 而不是 pathName (虽然部分版本兼容)
                 }}
                 avatarProps={{
-                    src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
+                    src: loginUser.userAvatar,
                     size: 'small',
-                    title: 'wfh',
+                    title: loginUser.userName || '面试鸭用户',
                     render: (props, dom) => {
                         return (
                             <Dropdown
@@ -125,20 +129,9 @@ export default function BasicLayout({ children }: Props) {
                     );
                 }}
                 // 6. 稍微规范化菜单配置
-                menuDataRender={() => [
-                    {
-                        path: "/",
-                        name: "主页",
-                    },
-                    {
-                        path: "/questions",
-                        name: "题目",
-                    },
-                    {
-                        path: "/banks",
-                        name: "题库",
-                    }
-                ]}
+                menuDataRender={() => {
+                    return getAccessibleMenus(loginUser, menus);
+                }}
                 footerRender={(props) => {
                    return <GlobalFooter/>
                 }}
