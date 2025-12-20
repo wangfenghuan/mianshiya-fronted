@@ -17,12 +17,10 @@ const menus:MenuDataItem[] = [
     {
         path: "/admin",
         name: "管理",
-        access: accessEnum.ADMIN,
         children: [
             {
                 path: "/admin/user",
                 name: "用户管理",
-                access: accessEnum.ADMIN
             }
         ]
 
