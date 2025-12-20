@@ -7,7 +7,7 @@ export async function addQuestionUsingPost(
   body: API.QuestionAddRequest,
   options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponseLong_>("/api/question/add", {
+  return request<API.BaseResponseLong_>("/question/add", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

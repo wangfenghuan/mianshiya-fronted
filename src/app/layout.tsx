@@ -20,6 +20,7 @@ const InitLayout: React.FC<Readonly<{
         const res = await getLoginUserUsingGet();
         if (res.data){
             //更新用户全局状态
+            dispatch(setLoginUser(res.data));
         }else {
             dispatch((setLoginUser({userName: "测试用户"})))
         }

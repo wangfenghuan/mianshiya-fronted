@@ -2,7 +2,7 @@ import axios from "axios";
 
 // 创建 Axios 示例
 const myAxios = axios.create({
-    baseURL: "https://m1.apifoxmock.com/m1/7584290-7322243-default",
+    baseURL: "https://m1.apifoxmock.com/m1/7584290-7322243-default/",
     timeout: 10000,
     withCredentials: true,
 });
@@ -34,9 +34,6 @@ myAxios.interceptors.response.use(
             ) {
                 window.location.href = `/user/login?redirect=${window.location.href}`;
             }
-        } else if (data.code !== 0) {
-            // 其他错误
-            throw new Error(data.message ?? "服务器错误");
         }
         return data;
     },

@@ -2,12 +2,12 @@
 /* eslint-disable */
 import request from "@/libs/request";
 
-/** addQuestionBankQuestion POST /api/questionBankQuestion/add */
+/** addQuestionBankQuestion POST /questionBankQuestion/add */
 export async function addQuestionBankQuestionUsingPost(
   body: API.QuestionBankQuestionAddRequest,
   options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponseLong_>("/api/questionBankQuestion/add", {
+  return request<API.BaseResponseLong_>("/questionBankQuestion/add", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,13 +17,13 @@ export async function addQuestionBankQuestionUsingPost(
   });
 }
 
-/** 批量添加题目到题库管理员使用 POST /api/questionBankQuestion/add/batch */
+/** 批量添加题目到题库管理员使用 POST /questionBankQuestion/add/batch */
 export async function batchAddQuestionsToBankUsingPost(
   body: API.QuestionBankQuestionBatchAddRequest,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponseBoolean_>(
-    "/api/questionBankQuestion/add/batch",
+    "/questionBankQuestion/add/batch",
     {
       method: "POST",
       headers: {
@@ -35,12 +35,12 @@ export async function batchAddQuestionsToBankUsingPost(
   );
 }
 
-/** deleteQuestionBankQuestion POST /api/questionBankQuestion/delete */
+/** deleteQuestionBankQuestion POST /questionBankQuestion/delete */
 export async function deleteQuestionBankQuestionUsingPost(
   body: API.DeleteRequest,
   options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponseBoolean_>("/api/questionBankQuestion/delete", {
+  return request<API.BaseResponseBoolean_>("/questionBankQuestion/delete", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -50,14 +50,14 @@ export async function deleteQuestionBankQuestionUsingPost(
   });
 }
 
-/** getQuestionBankQuestionVOById GET /api/questionBankQuestion/get/vo */
+/** getQuestionBankQuestionVOById GET /questionBankQuestion/get/vo */
 export async function getQuestionBankQuestionVoByIdUsingGet(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.getQuestionBankQuestionVOByIdUsingGETParams,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponseQuestionBankQuestionVO_>(
-    "/api/questionBankQuestion/get/vo",
+    "/questionBankQuestion/get/vo",
     {
       method: "GET",
       params: {
@@ -68,13 +68,13 @@ export async function getQuestionBankQuestionVoByIdUsingGet(
   );
 }
 
-/** listQuestionBankQuestionByPage POST /api/questionBankQuestion/list/page */
+/** listQuestionBankQuestionByPage POST /questionBankQuestion/list/page */
 export async function listQuestionBankQuestionByPageUsingPost(
   body: API.QuestionBankQuestionQueryRequest,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponsePageQuestionBankQuestion_>(
-    "/api/questionBankQuestion/list/page",
+    "/questionBankQuestion/list/page",
     {
       method: "POST",
       headers: {
@@ -86,13 +86,13 @@ export async function listQuestionBankQuestionByPageUsingPost(
   );
 }
 
-/** listQuestionBankQuestionVOByPage POST /api/questionBankQuestion/list/page/vo */
+/** listQuestionBankQuestionVOByPage POST /questionBankQuestion/list/page/vo */
 export async function listQuestionBankQuestionVoByPageUsingPost(
   body: API.QuestionBankQuestionQueryRequest,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponsePageQuestionBankQuestionVO_>(
-    "/api/questionBankQuestion/list/page/vo",
+    "/questionBankQuestion/list/page/vo",
     {
       method: "POST",
       headers: {
@@ -104,13 +104,13 @@ export async function listQuestionBankQuestionVoByPageUsingPost(
   );
 }
 
-/** listMyQuestionBankQuestionVOByPage POST /api/questionBankQuestion/my/list/page/vo */
+/** listMyQuestionBankQuestionVOByPage POST /questionBankQuestion/my/list/page/vo */
 export async function listMyQuestionBankQuestionVoByPageUsingPost(
   body: API.QuestionBankQuestionQueryRequest,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponsePageQuestionBankQuestionVO_>(
-    "/api/questionBankQuestion/my/list/page/vo",
+    "/questionBankQuestion/my/list/page/vo",
     {
       method: "POST",
       headers: {
@@ -122,12 +122,12 @@ export async function listMyQuestionBankQuestionVoByPageUsingPost(
   );
 }
 
-/** 移除题目题库关联 POST /api/questionBankQuestion/remove */
+/** 移除题目题库关联 POST /questionBankQuestion/remove */
 export async function removeQuestionBankQuestionUsingPost(
   body: API.QuestionBankQuestionRemoveRequest,
   options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponseBoolean_>("/api/questionBankQuestion/remove", {
+  return request<API.BaseResponseBoolean_>("/questionBankQuestion/remove", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -137,13 +137,13 @@ export async function removeQuestionBankQuestionUsingPost(
   });
 }
 
-/** 批量添加题目到题库管理员使用 POST /api/questionBankQuestion/remove/batch */
+/** 批量添加题目到题库管理员使用 POST /questionBankQuestion/remove/batch */
 export async function batchRemoveQuestionsToBankUsingPost(
   body: API.QuestionBankQuestionBatchRemoveRequest,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponseBoolean_>(
-    "/api/questionBankQuestion/remove/batch",
+    "/questionBankQuestion/remove/batch",
     {
       method: "POST",
       headers: {
@@ -155,12 +155,12 @@ export async function batchRemoveQuestionsToBankUsingPost(
   );
 }
 
-/** updateQuestionBankQuestion POST /api/questionBankQuestion/update */
+/** updateQuestionBankQuestion POST /questionBankQuestion/update */
 export async function updateQuestionBankQuestionUsingPost(
   body: API.QuestionBankQuestionUpdateRequest,
   options?: { [key: string]: any }
 ) {
-  return request<API.BaseResponseBoolean_>("/api/questionBankQuestion/update", {
+  return request<API.BaseResponseBoolean_>("/questionBankQuestion/update", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

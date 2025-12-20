@@ -10,17 +10,21 @@ import {
 } from '@ant-design/pro-components';
 import {
     Dropdown,
-    Input,
+    Input, message,
     theme,
 } from 'antd';
 import React from 'react'; // 移除了不用的 useState
-import { usePathname } from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import Link from "next/link";
 import GlobalFooter from "@/components/GlobalFooter";
 import menus from "../../../config/menu";
-import {useSelector} from "react-redux";
-import {RootState} from "@/stores";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, RootState} from "@/stores";
 import {getAccessibleMenus} from "@/access/menuAccess";
+import {userLogoutUsingPost} from "@/api/userController";
+import {set} from "lodash-es";
+import {setLoginUser} from "@/stores/loginUser";
+import {DefauleUser} from "@/constants/UserState";
 
 // 1. 这里的 key 属性去掉了，因为它应该在调用方使用
 const SearchInput = () => {
@@ -67,7 +71,22 @@ interface Props {
 
 export default function BasicLayout({ children }: Props) {
     const pathName = usePathname();
-    const loginUser = useSelector((state: RootState) => state.loginUser)
+    const loginUser = useSelector((state: RootState) => state.loginUser);
+    const router = useRouter();
+    const dispatch = useDispatch<AppDispatch>();
+    const logout = async () => {
+        try {
+            const res = await userLogoutUsingPost();
+            if (res.data.code){
+                message.success("账号已经退出");
+                dispatch(setLoginUser(DefauleUser));
+                router.push("/user/login");
+            }
+        } catch (e) {
+            message.error("退出失败" + e.message);
+        }
+
+    }
     return (
         <div
             id="basiclayout"
@@ -100,6 +119,12 @@ export default function BasicLayout({ children }: Props) {
                                             label: '退出登录',
                                         },
                                     ],
+                                    onClick: async (event: {key: React.Key }) => {
+                                        const {key} = event;
+                                        if (key === "logout") {
+                                            await logout();
+                                        }
+                                    }
                                 }}
                             >
                                 {dom}
