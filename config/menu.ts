@@ -21,6 +21,14 @@ const menus:MenuDataItem[] = [
             {
                 path: "/admin/user",
                 name: "用户管理",
+            },
+            {
+                path: '/admin/bank',
+                name: '题库管理'
+            },
+            {
+                path: '/admin/question',
+                name: '题目管理'
             }
         ]
 
